@@ -28,6 +28,9 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
                                              
 - /var/run/secrets/kubernetes.io/serviceaccount/token
       - (service account token mounted inside container)
+- /etc/kubernetes/pki/ca.key 
+      - (kubeadm's defualt location for storing certs)
+      - (...most clusters are installed using kubadm)
       
 
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -125,7 +128,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
       - even if they don't want to, k8s admins are forced to let DNS traffic flow freely (bc the cluster needs it)
       - this bypasses the egress filter!
       - amazing for exfiltration
-
+- get access to the /etc/kubernetes/pki/ca.key file as that's a "golden key" to persistent cluster access.
    
   
 ------------------------------------------------------------------------------------------------------------------------------------
