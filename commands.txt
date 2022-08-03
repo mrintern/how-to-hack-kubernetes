@@ -53,3 +53,14 @@ Requirements:
 
 5. ansible-playbook insecure-port.yml
  If everything works thus far, I think we're ready to start hacking.
+
+
+ "failed to init node with kubeadm"
+ docker exec --privileged insecureport-control-plane
+ kubeadm init --skip-phases=preflight --config=/kind/kubeadm.conf
+ --skip-token-print --v=6
+
+INSTALL DEPENDS ON kubeadm
+MUST INSTALL kubeadm...
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
