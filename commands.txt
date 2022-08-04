@@ -9,15 +9,16 @@ Requirements:
 
 
 0. (Windows) install ubuntu app from Microsoft store
-
-1. install kind, docker, ansible, kubectl...
+  - install everything else from ubuntu app
+1. install kind, docker, ansible, kubectl, etc...
 
 * note to self, consider writing a script for this...
 
-  INSTALL docker
-  ...
+  INSTALL kubectl, kubeadmn, kubelet
+  - follow these instructions carefully!
+  - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
-  INSTALL kubectl
+  INSTALL docker
   ...
 
   INSTALL ansible
@@ -39,28 +40,31 @@ Requirements:
   - pip3 install docker
 
 2. verify installation with the following commands
-- kubectl
-- kind
-- docker
-- ansible
+  - kubectl
+  - kind
+  - docker
+  - ansible
+  - kubeadm
 
 3. create kind cluster
-- kind cluster create
+  - kind cluster create
 
-4. clone project
-- git clone https://github.com/raesene/kube_security_lab.git
-- cd kube_security_lab
-
-5. ansible-playbook insecure-port.yml
- If everything works thus far, I think we're ready to start hacking.
+4. clone project and try running an ansible playbook
+  - git clone https://github.com/raesene/kube_security_lab.git
+  - cd kube_security_lab
+  - ansible-playbook insecure-port.yml
 
 
- "failed to init node with kubeadm"
- docker exec --privileged insecureport-control-plane
- kubeadm init --skip-phases=preflight --config=/kind/kubeadm.conf
- --skip-token-print --v=6
+If everything works thus far, I think we're ready to start hacking.
 
-INSTALL DEPENDS ON kubeadm
-MUST INSTALL kubeadm...
+ERROR LOG
 
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
+  - link to github issue
+  - https://github.com/raesene/kube_security_lab/issues/15
+
+this command ran fine:
+- kubeadm init --skip-phases=preflight --v=6
+kubeadm runs within docker... probably why its not listed as a dependency
+this also explains why i can't find a /kind/kubeadm.conf file
+
+Try to understand better what the ansible playbooks are doing
