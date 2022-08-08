@@ -18,7 +18,10 @@ Requirements:
   - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 ##  INSTALL docker
-  - https://www.docker.com/products/docker-desktop/
+  - https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository
+  - the above link is to install on linux (ubuntu), and windows (using the ubuntu app)
+  - if you are using a mac, install docker desktop and docker engine will be installed along with it
+   https://docs.docker.com/desktop/install/mac-install/
 
 ##  INSTALL ansible
   - `sudo apt-get update`
@@ -28,6 +31,7 @@ Requirements:
   - `sudo apt-get install ansible`
 
 ##  INSTALL kind
+  - official installation guide: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
   - `curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.0/kind-linux-amd64`
       - notice how we specify v0.11.0 here
   - `chmod +x ./kind`
@@ -46,6 +50,11 @@ Requirements:
   - `ansible`
   - `kubeadm`
 
+3. check the docker daemon is running
+  - `sudo dockerd &`
+  -
+
+
 3. create kind cluster
   - `kind cluster create`
 
@@ -55,3 +64,7 @@ Requirements:
   - `ansible-playbook insecure-port.yml`
 
 If everything works thus far, I then you're ready to start hacking!
+
+ERROR LOG
+- something wrong with the docker installation... can't `docker ps` without sudo...
+- uninstall reinstall docker via ubuntu app
