@@ -1,4 +1,4 @@
-loose instructions to launch kube_security_lab
+# how to install kube-security-lab
 
 ## Requirements:
 - (windows) ubuntu app
