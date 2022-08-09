@@ -19,9 +19,13 @@ Requirements:
 
 ##  INSTALL docker
   - https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository
-  - the above link is to install on linux (ubuntu), and windows (using the ubuntu app)
+  - the above link is to install on linux (ubuntu)
   - if you are using a mac, install docker desktop and docker engine will be installed along with it
    https://docs.docker.com/desktop/install/mac-install/
+  - if you are on windows, simply install docker desktop on your windows machine and enable integration
+  with your ubuntu app via the docker desktop settings:
+
+  
 
 ##  INSTALL ansible
   - `sudo apt-get update`
@@ -51,8 +55,7 @@ Requirements:
   - `kubeadm`
 
 3. check the docker daemon is running
-  - `sudo dockerd &`
-  -
+  - make sure your
 
 
 3. create kind cluster
