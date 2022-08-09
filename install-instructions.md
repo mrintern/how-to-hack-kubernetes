@@ -55,7 +55,7 @@ loose instructions to launch kube_security_lab
   - `kubeadm`
 
 ## 3. create kind cluster
-  - `kind cluster create`
+  - `kind create cluster`
 
 ## 4. clone project and try running an ansible playbook
   - `git clone https://github.com/raesene/kube_security_lab.git`
