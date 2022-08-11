@@ -31,6 +31,9 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 - /etc/kubernetes/pki/ca.key 
       - (kubeadm's defualt location for storing certs)
       - (...most clusters are installed using kubadm)
+- NAMESPACE: default
+- NAMESPACE: kube-system
+   - this is where the treasure is. Access to this namespace is great.
       
 
 ------------------------------------------------------------------------------------------------------------------------------------
