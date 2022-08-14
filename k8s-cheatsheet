@@ -102,11 +102,10 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 
 443, 6443, 8443 - Kubernetes API server
       - check version as unauthenticated user
-         - kubectl --insecure-skip-tls-verify --username=system:unauthenticated -shttps://[IP]:[PORT] version
-      - check unauthenticated user privs
-         - kubectl --insecure-skip-tls-verify --username=system:unauthenticated -shttps://[IP]:[PORT] auth can-i --list
-      - check for anon curl access
-         - curl -k https://[IP]:[PORT]/version
+         - kubectl --insecure-skip-tls-verify --username=system:unauthenticated -shttps://[IP]:[PORT] <COMMAND>
+         - version
+         - auth can-i --list
+      - curl -k https://[IP]:[PORT]/version
       
 8001 - kubeproxy
       - is this specific to minikube?
