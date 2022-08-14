@@ -36,59 +36,9 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
    - this is where the treasure is. Access to this namespace is great.
       
 
-------------------------------------------------------------------------------------------------------------------------------------
-                                          commands i've run
-------------------------------------------------------------------------------------------------------------------------------------
-
-- minikube version
-- minikube start
-- kubectl version
-- kubectl cluster-info
-- kubectl get nodes
-- kubectl get pods
-
-- kubectl create deployment <deployment-name> --image=gcr.io/google-samples/kubernetes-bootcamp:v1
-- kubectl get deployments
-- kubectl proxy
-   - curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
-
-- kubectl describe pods
-- kubectl proxy
-   - curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
-- kubectl logs <POD-NAME> -c <CONTAINER-NAME>
-- kubectl exec <POD-NAME> -- env
-- kubectl exec <POD-NAME> -ti -- bash
-   - (-ti ensures we get an interactive shell)
-   
-- kubectl expose deployment/<DEPLOYMENT-NAME> --type="NodePort" --port 8080
-- kubectl get services
-- kubectl describe services
-- kubectl describe services/<SERVICE-NAME>
-- curl <NODE-IP>:<NODE-PORT>
-
-- kubectl get pods -l="<LABEL-NAME>"
-- kubectl label <OBJECT-TYPE> <OBJECT-NAME> <NEW-LABEL>
-- kubectl label pods $POD_NAME version=v1
-- kubectl delete service -l app=kubernetes-bootcamp
-
-- kubectl get rs
-      - (get ReplicaSet)
-- kubectl scale deployments/kubernetes-bootcamp --replicas=4
-      - (for a given deployment, increases # of replicas)
-- kubectl get pods -o wide
-      - (displays pod ip, node ip)
-      
-- kubectl set image deployments/<DEPLOYMENT-NAME> <DEPLOYMENT-NAME>=<CONTAINER-IMAGE-NAME>:<VERSION>
-- kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatlin/kubernetes-bootcamp:v2
-      - (update deployment to new image)
-- kubectl rollout status deployments/<DEPLOYMENT-NAME>
-- kubectl rollout undo deployments/kubernetes-bootcamp
-      - (rollback the deployment to previous working version)
-      
-- kubectl get pods --all-namespaces
 
 ------------------------------------------------------------------------------------------------------------------------------------
-                                          commands i've run (inside container)
+                                          random commands i've run (inside container)
 ------------------------------------------------------------------------------------------------------------------------------------
 
 - curl localhost:8080
@@ -109,11 +59,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
       
 8001 - kubeproxy
       - is this specific to minikube?
-
-8443 - control planel / kube-api 
-      - is this specific to minikube?
-
-  
+ 
   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             random k8s facts
