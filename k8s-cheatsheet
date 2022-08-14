@@ -55,6 +55,9 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
       - COMMANDS:
          - version
          - auth can-i --list
+         - get pods
+         - exec <POD> -- ls
+         - exec <POD> -- cat /etc/kubernetes/pki/ca.key 
          - try --namespace=kube-system
       - curl -k https://[IP]:[PORT]/version
       
