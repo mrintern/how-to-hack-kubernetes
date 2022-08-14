@@ -52,7 +52,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 
 443, 6443, 8443 - Kubernetes API server
       - check version as unauthenticated user
-         - kubectl --insecure-skip-tls-verify --username=system:unauthenticated -shttps://[IP]:[PORT] <COMMAND>
+         - kubectl --insecure-skip-tls-verify --username=system:unauthenticated -shttp://[IP]:[PORT] <COMMAND>
          - version
          - auth can-i --list
       - curl -k https://[IP]:[PORT]/version
