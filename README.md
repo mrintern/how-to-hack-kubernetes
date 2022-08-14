@@ -3,7 +3,9 @@
 ### A field guide for cloud ninjas and red teams
 ![image](https://user-images.githubusercontent.com/24460340/169073810-c0a06695-2f0f-492d-8283-a129b8e9ab3c.png)
  
-Note: sorry this is sort of a dump of notes at the moment. Hopefully I will organize this eventually.
+### Note: 
+sorry this is sort of a dump of notes at the moment. Hopefully I will organize this eventually.
+
 Disclaimer: Use these tips only on clusters you are authorized to be infiltrating.
 
 ## Recon
