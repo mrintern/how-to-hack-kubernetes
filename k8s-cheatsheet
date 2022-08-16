@@ -61,6 +61,13 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
          - try --namespace=kube-system
       - curl -k https://[IP]:[PORT]/version
       
+2379 - etcd client
+      - DUMP SECRETS
+         - export ETCDCTL_API=3
+         - etcdctl --insecure-skip-tls-verify --insecure-transport=false --endpoints=https://[CLUSTERIP]:2379 get / --prefix --keys-only
+         
+2380 - etcd server
+      
 8001 - kubeproxy
       - is this specific to minikube?
  
