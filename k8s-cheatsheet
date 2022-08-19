@@ -47,6 +47,8 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
    - (view service account token!)
 - kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system exec <POD> -- ls
    - RCE with compromised SA token
+- kubectl create [POD-MANIFEST].yml
+- kubectl logs [POD]
   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             ports
