@@ -1,4 +1,5 @@
-# Attacking Kubernetes (A work in progress)
+# (WORK IN PROGRESS)
+# Attacking Kubernetes
 
 ### A field guide for cloud ninjas and red teams
 ![image](https://user-images.githubusercontent.com/24460340/169073810-c0a06695-2f0f-492d-8283-a129b8e9ab3c.png)
