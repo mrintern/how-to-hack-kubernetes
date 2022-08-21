@@ -82,9 +82,10 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
          
 2380 - etcd server
 
+30000-32767 - NodePort
+
 ??? - uknown port
       - curl -k https://[CLUSTER]:PORT
-      - ssh -p [PORT] admin@[CLUSTER IP]
       
 8001 - kubeproxy
       - is this specific to minikube?
