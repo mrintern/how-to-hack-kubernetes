@@ -52,6 +52,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 - kubectl auth can-i --list
 - cat /proc/self/cgroup
    ( answers the question 'Am I in a container?' )
+- kubectl get secrets -n kube-system
   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             ports
