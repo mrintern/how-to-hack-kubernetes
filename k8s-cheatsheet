@@ -50,6 +50,8 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 - kubectl create [POD-MANIFEST].yml
 - kubectl logs [POD]
 - kubectl auth can-i --list
+- cat /proc/self/cgroup
+   ( answers the question 'Am I in a container?' )
   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             ports
