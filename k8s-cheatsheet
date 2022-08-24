@@ -135,7 +135,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
       - this bypasses the egress filter!
       - amazing for exfiltration
 - get access to the /etc/kubernetes/pki/ca.key file as that's a "golden key" to persistent cluster access.
-   
+- by default, kubernetes does NOT encrypt traffic between nodes and between services
   
 ------------------------------------------------------------------------------------------------------------------------------------
                                             A k8s attacker should know how to...
