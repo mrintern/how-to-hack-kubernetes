@@ -1,5 +1,7 @@
 # How to Install [kube-security-lab](https://github.com/raesene/kube_security_lab)
 
+Prefer video instructions? Check out this [tutorial video](https://www.youtube.com/watch?v=y9PbNDdtHGo&list=PLSGxDsVUZ-zyGCCYUnS5oyi54VuTQ0W4w&index=2)
+
 ## Requirements:
 - (windows) ubuntu app
 - kind
