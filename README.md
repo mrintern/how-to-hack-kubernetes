@@ -4,11 +4,11 @@
 Mainly, it just holds a kubernetes hacking cheatsheet. More generally, this repo is meant to help red teamers and cloud ninjas cover the basics when it comes to hacking Kubernetes. Kubernetes is everywhere and growing in popularity every year. If you consider yourself a hacker, it's time to learn how to hack Kubernetes.
 
 ## How to Use
-- the [Kubernetes hacking cheatsheet](https://github.com/mrintern/attacking-k8s-project/blob/main/k8s-cheatsheet) is simple to use. Just copy and paste commands, replacing [CLUSTER IP] with the IP of a live node you are testing. 
-- If you want, use this repo alongside the ["How to hack kubernetes"](https://www.youtube.com/playlist?list=PLSGxDsVUZ-zyGCCYUnS5oyi54VuTQ0W4w) videos which walk you through lots of scenarios using kube-security-lab
+- the [Kubernetes hacking cheatsheet](https://github.com/mrintern/how-to-hack-kubernetes/blob/main/k8s-hacking-cheatsheet) is simple to use. Just copy and paste commands, replacing [CLUSTER IP] with the IP of a live node you are testing. 
+- If you want, use this repo alongside the ["How to Hack Kubernetes"](https://www.youtube.com/playlist?list=PLSGxDsVUZ-zyGCCYUnS5oyi54VuTQ0W4w) videos which walk you through lots of scenarios using kube-security-lab
 
 ## Index
-- [Kubernetes hacking cheatsheet](https://github.com/mrintern/attacking-k8s-project/blob/main/k8s-cheatsheet)
+- [Kubernetes hacking cheatsheet](https://github.com/mrintern/how-to-hack-kubernetes/blob/main/k8s-hacking-cheatsheet)
 - [5 Reasons Why You Should Care About Hacking Kubernetes](https://www.youtube.com/watch?v=KYba50YBV8M&list=PLSGxDsVUZ-zyGCCYUnS5oyi54VuTQ0W4w&index=1)
 - [Setting Up your Kubernetes Hacking Environment](https://www.youtube.com/watch?v=y9PbNDdtHGo&list=PLSGxDsVUZ-zyGCCYUnS5oyi54VuTQ0W4w&index=2)
 
