@@ -1,4 +1,4 @@
-# how to install kube-security-lab
+# How to Install [kube-security-lab](https://github.com/raesene/kube_security_lab)
 
 ## Requirements:
 - (windows) ubuntu app
