@@ -56,6 +56,9 @@ _/ ___\ |  |  \ _/ __ \ \__  \ \   __\     /  ___/|  |  \ _/ __ \_/ __ \\   __\
    
 - kubectl logs [POD]
 
+- kubctl get pods -o wide
+   (get pod name, IP, node, etc)
+
 - kubectl auth can-i --list
    ( check what you can do with a compromised service account token )
 
